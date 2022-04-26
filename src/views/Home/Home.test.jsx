@@ -1,3 +1,4 @@
+const { toBeInTheDocument } = require('@testing-library/jest-dom/dist/matchers')
 const { render, getByRole, screen, getByText } = require('@testing-library/react')
 const { default: Home } = require('./Home')
 
@@ -25,6 +26,10 @@ test('Should render the user profile', async () => {
   const listItems = screen.getAllByRole('listitem')
 
   expect(listItems.length).toEqual(user.likes.length)
+  expect(img).toBeInTheDocument()
+  expect(name).toBeInTheDocument()
+  expect(motto).toBeInTheDocument()
+  expect(headerImg).toBeInTheDocument()
 
   user.likes.forEach((item) => screen.getByText(`${item}`))
 
